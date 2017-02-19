@@ -14,9 +14,8 @@
 #define ABC std::string("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ?!.,-")
 using namespace std;
 
-GA::TextCandidate::TextCandidate(){
+GA::TextCandidate::TextCandidate(int dna_length){
     chromosome.empty();
-    int dna_length = 7500;
     for(int d=0; d < dna_length; d++){
         /* generate a gene in the range 0 to 255 */
         int cell = std::rand() % 255;
@@ -36,7 +35,7 @@ string GA::TextCandidate::get_phenotype() const{
     return phenotype;
 }
 
-void GA::TextCandidate::parse(){
+void GA::TextCandidate::parse_phenotype(){
     string text;
     for(int i=0;i<chromosome.size(); i++){
         int cell = chromosome.at(i);
@@ -50,7 +49,7 @@ float GA::TextCandidate::get_cost() const{
 }
 
 void GA::TextCandidate::calcCost(std::string target){
-    parse();
+    parse_phenotype();
     float difference = 0;
     for(int i=0; i < phenotype.size(); i++){
         int diff = (int)phenotype.at(i) - (int)target.at(i);

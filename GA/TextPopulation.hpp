@@ -17,13 +17,16 @@ namespace GA{
     private:
         int generation {0};
         std::vector<TextCandidate> members;
+        float crossover_rate {0.7};
+        float mutation_rate {0.01};
+
     public:
         
-        TextPopulation(int size=800);
+        TextPopulation(int size=80);
         
         bool evaluate(std::string target);
         void evolve();
-        TextCandidate best() const;
+        TextCandidate get_best() const;
         
         float get_average_cost() const;
         float get_generation() const;

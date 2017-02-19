@@ -22,10 +22,10 @@ namespace GA{
         std::string phenotype;
     
     private:
-        void parse();
+        void parse_phenotype();
     
     public:
-        TextCandidate();
+        TextCandidate(int dna_length=7500);
         TextCandidate(std::vector<int>);
         void calcCost(std::string target);
         void mutate(float mutation_rate);

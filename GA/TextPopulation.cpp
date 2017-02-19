@@ -22,7 +22,7 @@ GA::TextPopulation::TextPopulation(int size){
     }
 }
 
-GA::TextCandidate GA::TextPopulation::best() const{
+GA::TextCandidate GA::TextPopulation::get_best() const{
     GA::TextCandidate _best = members.at(0);
     for(int i=1; i<members.size(); i++)
         if(members.at(i).get_cost()<_best.get_cost())
@@ -73,8 +73,6 @@ void GA::TextPopulation::evolve(){
     }
 
     /* BREED */
-    float mutation_rate = 0.001;
-    float crossover_rate = 0.65;
     vector<GA::TextCandidate> offsprings;
     offsprings.push_back(members.at(0));
     while (offsprings.size()<members.size()){
